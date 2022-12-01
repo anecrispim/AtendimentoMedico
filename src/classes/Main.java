@@ -22,30 +22,14 @@ public class Main {
 		
 		Paciente paciente = new Paciente(dataPaciente, "Jerundio");
 		
-		boolean[] respostas = new boolean[5];
-		String[] perguntas = {
-				"Está sentindo dor?"
-				, "Está com febre?"
-				, "É gestante, idoso ou recém nascido?"
-				, "Foi mordido por algum animal pessonhento?"
-				, "Está inconsciente?"
-		};
-		String resposta;
-		System.out.println("Responda as seguintes perguntas com sim ou não?");
-		for (int i = 0; i < perguntas.length; i++) {
-			System.out.println(perguntas[i]);
-			resposta = entrada.nextLine();
-			if (resposta.equals("sim")) {
-				respostas[i] = true;
-			} else {
-				respostas[i] = false;
-			}
-		}
+		Perguntas pergunta = new Perguntas();
+		
+		pergunta.RespondePerguntas(entrada);
 		
 		DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 		LocalDateTime inicio = LocalDateTime.parse("20/08/2022 11:30", formatterTime);
 		
-		Atendimento atendimento = new Atendimento(inicio, 1, paciente, respostas);
+		Atendimento atendimento = new Atendimento(inicio, 1, paciente, pergunta.getRespostas());
 		
 		ListaAtendimento listaA = new ListaAtendimento();
 		listaA.addLista(atendimento);
@@ -54,23 +38,11 @@ public class Main {
 		
 		Paciente paciente2 = new Paciente(dataPaciente2, "Clotilde");
 		
-		boolean[] respostas2 = new boolean[5];
-		
-		String resposta2;
-		System.out.println("Responda as seguintes perguntas com sim ou não?");
-		for (int i = 0; i < perguntas.length; i++) {
-			System.out.println(perguntas[i]);
-			resposta2 = entrada.nextLine();
-			if (resposta2.equals("sim")) {
-				respostas2[i] = true;
-			} else {
-				respostas2[i] = false;
-			}
-		}
+		pergunta.RespondePerguntas(entrada);
 		
 		LocalDateTime inicio2 = LocalDateTime.parse("22/08/2022 11:30", formatterTime);
 		
-		Atendimento atendimento2 = new Atendimento(inicio2, 1, paciente2, respostas2);
+		Atendimento atendimento2 = new Atendimento(inicio2, 1, paciente2, pergunta.getRespostas());
 		listaA.addLista(atendimento2);
 		
 		

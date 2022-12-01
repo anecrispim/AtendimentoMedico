@@ -2,7 +2,7 @@ package classes;
 
 import java.time.LocalDateTime;
 
-public class Atendimento extends Operacao implements Comparable<Atendimento>{
+public class Atendimento extends Operacao implements Comparable<Atendimento> {
 	private int prioridade;
 	private int estado;
 	private Medico medico;
@@ -66,6 +66,10 @@ public class Atendimento extends Operacao implements Comparable<Atendimento>{
 		}
 		return 0; 
 	}
+	
+	public String superToString() {
+		return super.toString();
+	}
 
 	@Override
 	public String toString() {
@@ -79,7 +83,7 @@ public class Atendimento extends Operacao implements Comparable<Atendimento>{
 		builder.append(", paciente=");
 		builder.append(paciente);
 		builder.append(", toString()=");
-		builder.append(super.toString());
+		builder.append(this.superToString());
 		builder.append("]");
 		return builder.toString();
 	}
